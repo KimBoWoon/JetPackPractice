@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.bowoon.android.jetpackpractice.dialogs.viewmodels.RemoveAllWishDialogViewModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_dialog_content"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="@{vm.content}"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Hello, World!" />
+
+            <TextView
+                android:id="@+id/tv_confirm_btn"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="#00ff00"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{() -> vm.onConfirm()}"
+                android:text="@{vm.confirmContent}"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toStartOf="@id/tv_cancel_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_dialog_content" />
+
+            <TextView
+                android:id="@+id/tv_cancel_btn"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="#ff0000"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{() -> vm.onCancel()}"
+                android:text="@{vm.cancelContent}"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_confirm_btn"
+                app:layout_constraintTop_toBottomOf="@id/tv_dialog_content" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
