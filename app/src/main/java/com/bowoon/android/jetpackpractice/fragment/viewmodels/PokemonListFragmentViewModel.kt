@@ -8,12 +8,18 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
+import com.bowoon.android.jetpackpractice.api.ResponseHandler
 import com.bowoon.android.jetpackpractice.base.BaseViewModel
 import com.bowoon.android.jetpackpractice.model.Pokemon
 import com.bowoon.android.jetpackpractice.paging.source.PokemonRemoteMediator
+import com.bowoon.android.jetpackpractice.paging.source.PokemonSource
 import com.bowoon.android.jetpackpractice.room.RoomHelper
 import com.bowoon.android.jetpackpractice.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,11 +30,13 @@ class PokemonListFragmentViewModel @Inject constructor(
     val goToDetail = SingleLiveEvent<Pair<Int, Pokemon>>()
     @OptIn(ExperimentalPagingApi::class)
     val pokemonPageFlow = Pager(
-        PagingConfig(pageSize = 20),
-        remoteMediator = PokemonRemoteMediator(roomHelper, pokemonApi)
+        PagingConfig(pageSize = 20, initialLoadSize = 20),
+//        remoteMediator = PokemonRemoteMediator(roomHelper, pokemonApi)
     ) {
-        roomHelper.roomPokemonDao().getPokemonList()
-    }.flow.cachedIn(viewModelScope)
+        PokemonSource(pokemonApi)
+//        roomHelper.roomPokemonDao().getPokemonList()
+    }.flow
+        //.cachedIn(viewModelScope)
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {

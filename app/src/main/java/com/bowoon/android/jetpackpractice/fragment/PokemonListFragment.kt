@@ -34,7 +34,12 @@ class PokemonListFragment : BaseFragmentWithViewModel<FragmentPokemonListBinding
     private val pokemonAdapter by lazy {
         PokemonPagingAdapter(PokemonComparator, activityVM, fragmentVM).apply {
             addLoadStateListener {
-                if (it.source.refresh is LoadState.NotLoading && it.append.endOfPaginationReached && (binding.rvPokemonList.adapter?.itemCount ?: 0) < 1) {
+                if (it.source.refresh is LoadState.Error) {
+                    binding.rvPokemonList.isVisible = false
+                    binding.tvEmpty.text = (it.source.refresh as? LoadState.Error)?.error?.message
+                    binding.tvEmpty.isVisible = true
+                    binding.pbLoading.isVisible = false
+                } else if (it.source.refresh is LoadState.NotLoading && it.append.endOfPaginationReached && (binding.rvPokemonList.adapter?.itemCount ?: 0) < 1) {
                     binding.rvPokemonList.isVisible = false
                     binding.tvEmpty.isVisible = true
                     binding.pbLoading.isVisible = false

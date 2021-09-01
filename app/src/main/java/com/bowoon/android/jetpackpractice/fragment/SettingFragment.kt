@@ -1,8 +1,11 @@
 package com.bowoon.android.jetpackpractice.fragment
 
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ShareCompat
 import androidx.lifecycle.lifecycleScope
 import com.bowoon.android.jetpackpractice.R
 import com.bowoon.android.jetpackpractice.activities.viewmodels.MainActivityViewModel

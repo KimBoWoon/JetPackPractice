@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> vh.goToDetail()}">
+        android:onClick="@{() -> vh.goToDetail(dto)}">
 
         <ImageView
             android:id="@+id/iv_pokemon_image"
