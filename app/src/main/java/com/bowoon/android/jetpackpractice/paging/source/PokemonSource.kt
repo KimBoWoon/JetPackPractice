@@ -12,7 +12,7 @@ class PokemonSource(
         return try {
             val response = pokemonApi.getPokemon(params.loadSize, params.key ?: 0)
             LoadResult.Page(
-                data = response.results?.toList() ?: listOf<Pokemon>(),
+                data = response.results?.toList() ?: listOf(),
                 prevKey = null, // Only paging forward.
                 nextKey = params.loadSize + (params.key ?: 0)
             )

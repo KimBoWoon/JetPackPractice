@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.bowoon.android.jetpackpractice.R
 import com.bowoon.android.jetpackpractice.base.BaseDialogWithViewModel
-import com.bowoon.android.jetpackpractice.databinding.DialogRemoveAllWishBinding
+import com.bowoon.android.jetpackpractice.databinding.PokemonDialogBinding
 import com.bowoon.android.jetpackpractice.dialogs.viewmodels.PokemonDialogViewModel
 
 class PokemonDialog(
@@ -13,7 +13,7 @@ class PokemonDialog(
     private val confirmClicked: (() -> Unit)? = null,
     private val cancelContent: String,
     private val cancelClicked: (() -> Unit)? = null,
-) : BaseDialogWithViewModel<DialogRemoveAllWishBinding, PokemonDialogViewModel>(
+) : BaseDialogWithViewModel<PokemonDialogBinding, PokemonDialogViewModel>(
     R.layout.pokemon_dialog, PokemonDialogViewModel::class.java, true, false
 ) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
