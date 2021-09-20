@@ -3,7 +3,7 @@ package com.bowoon.android.jetpackpractice.dialogs.viewmodels
 import androidx.lifecycle.MutableLiveData
 import com.bowoon.android.jetpackpractice.base.BaseViewModel
 
-class RemoveAllWishDialogViewModel : BaseViewModel() {
+class PokemonDialogViewModel : BaseViewModel() {
     val content = MutableLiveData<String>()
     val confirmContent = MutableLiveData<String>()
     val confirmClicked = MutableLiveData<Unit>()

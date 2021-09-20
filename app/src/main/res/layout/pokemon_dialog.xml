@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.bowoon.android.jetpackpractice.dialogs.viewmodels.RemoveAllWishDialogViewModel" />
+            type="com.bowoon.android.jetpackpractice.dialogs.viewmodels.PokemonDialogViewModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

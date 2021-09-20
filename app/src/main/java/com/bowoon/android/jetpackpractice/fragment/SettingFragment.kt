@@ -1,17 +1,14 @@
 package com.bowoon.android.jetpackpractice.fragment
 
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.core.app.ShareCompat
 import androidx.lifecycle.lifecycleScope
 import com.bowoon.android.jetpackpractice.R
 import com.bowoon.android.jetpackpractice.activities.viewmodels.MainActivityViewModel
 import com.bowoon.android.jetpackpractice.base.BaseFragmentWithViewModel
 import com.bowoon.android.jetpackpractice.databinding.FragmentSettingBinding
-import com.bowoon.android.jetpackpractice.dialogs.RemoveAllWishDialog
+import com.bowoon.android.jetpackpractice.dialogs.PokemonDialog
 import com.bowoon.android.jetpackpractice.fragment.viewmodels.SettingFragmentViewModel
 import com.bowoon.android.jetpackpractice.room.RoomHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,7 +45,7 @@ class SettingFragment : BaseFragmentWithViewModel<FragmentSettingBinding, Settin
 
     override fun initLiveData() {
         fragmentVM.removeAllWish.observe(viewLifecycleOwner) {
-            RemoveAllWishDialog(
+            PokemonDialog(
                 "위시 리스트에 저장된 모든 포켓몬들이 사라집니다.\n정말 삭제하시겠습니까?",
                 "삭제",
                 {

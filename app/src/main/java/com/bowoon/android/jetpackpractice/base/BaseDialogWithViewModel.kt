@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.*
 import androidx.annotation.CallSuper
@@ -13,7 +12,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import com.bowoon.android.jetpackpractice.dialogs.viewmodels.RemoveAllWishDialogViewModel
 import com.bowoon.android.jetpackpractice.util.toPx
 
 open class BaseDialogWithViewModel<V : ViewDataBinding, VM: BaseViewModel>(
