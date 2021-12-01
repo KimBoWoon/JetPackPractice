@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NavigationPractice">
-        <activity android:name="com.bowoon.android.jetpackpractice.activities.MainActivity">
+        <activity
+            android:name="com.bowoon.android.jetpackpractice.activities.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
