@@ -8,10 +8,11 @@ object Versions {
         const val buildToolVersion = "30.0.3"
         const val versionCode = 1
         const val versionName = "1.0.0"
-        const val commonVersionCode = 1
-        const val commonVersionName = "1.0.0"
-        const val networkVersionCode = 1
-        const val networkVersionName = "1.0.0"
+        const val applicationId = "com.bowoon.android.jetpackpractice"
+        const val proguardFile = "proguard-android-optimize.txt"
+        const val proguardRules = "proguard-rules.pro"
+        const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        const val jvmVersion = "1.8"
     }
 
     object Plugins {
@@ -26,7 +27,6 @@ object Versions {
         const val fragmentVersion = "1.4.0"
         const val navigationVersion = "2.3.5"
         const val constraintLayout = "2.1.2"
-        const val komoranVersion = "3.3.4"
         const val swipeVersion = "1.1.0"
         const val materialVersion = "1.3.0"
         const val jsoupVersion = "1.12.1"

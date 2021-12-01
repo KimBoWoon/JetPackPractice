@@ -1,7 +1,7 @@
 plugins {
-    id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    id("com.android.application")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
     id("dagger.hilt.android.plugin")
@@ -9,23 +9,23 @@ plugins {
 }
 
 android {
-    compileSdkVersion(com.bowoon.android.buildsrc.Versions.Apps.compileSdk)
-    buildToolsVersion(com.bowoon.android.buildsrc.Versions.Apps.buildToolVersion)
+    setCompileSdkVersion(com.bowoon.android.buildsrc.Versions.Apps.compileSdk)
+    buildToolsVersion = com.bowoon.android.buildsrc.Versions.Apps.buildToolVersion
 
     defaultConfig {
-        applicationId = "com.bowoon.android.navigationpractice"
-        minSdkVersion(com.bowoon.android.buildsrc.Versions.Apps.minSdk)
-        targetSdkVersion(com.bowoon.android.buildsrc.Versions.Apps.targetSdk)
+        applicationId = com.bowoon.android.buildsrc.Versions.Apps.applicationId
+        minSdk = com.bowoon.android.buildsrc.Versions.Apps.minSdk
+        targetSdk = com.bowoon.android.buildsrc.Versions.Apps.targetSdk
         versionCode = com.bowoon.android.buildsrc.Versions.Apps.versionCode
         versionName = com.bowoon.android.buildsrc.Versions.Apps.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = com.bowoon.android.buildsrc.Versions.Apps.testInstrumentationRunner
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile(com.bowoon.android.buildsrc.Versions.Apps.proguardFile), com.bowoon.android.buildsrc.Versions.Apps.proguardRules)
         }
     }
     compileOptions {
@@ -33,7 +33,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = com.bowoon.android.buildsrc.Versions.Apps.jvmVersion
     }
     buildFeatures {
         dataBinding = true
