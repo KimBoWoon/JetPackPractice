@@ -1,4 +1,4 @@
-package com.bowoon.android.navigationpractice
+package com.bowoon.android.jetpackpractice
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

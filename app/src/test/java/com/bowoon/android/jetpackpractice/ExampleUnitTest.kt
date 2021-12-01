@@ -1,4 +1,4 @@
-package com.bowoon.android.navigationpractice
+package com.bowoon.android.jetpackpractice
 
 import org.junit.Test
 
