@@ -51,13 +51,10 @@ dependencies {
     testImplementation(com.bowoon.android.buildsrc.Dependencies.Test.junit)
     androidTestImplementation(com.bowoon.android.buildsrc.Dependencies.Test.junitExt)
     androidTestImplementation(com.bowoon.android.buildsrc.Dependencies.Test.espresso)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.navigation)
     implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.navigationUi)
-
     implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.fragment)
-
     implementation(com.bowoon.android.buildsrc.Dependencies.Retrofit2.retrofit)
     implementation(com.bowoon.android.buildsrc.Dependencies.Okhttp.loggingInterceptor)
     implementation(com.bowoon.android.buildsrc.Dependencies.Glide.glide)
@@ -65,13 +62,10 @@ dependencies {
     implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.room)
     kapt(com.bowoon.android.buildsrc.Dependencies.Ktx.roomCompiler)
     implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.paging)
-
     implementation(com.bowoon.android.buildsrc.Dependencies.Hilt.hiltAndroid)
     kapt(com.bowoon.android.buildsrc.Dependencies.Hilt.hiltCompiler)
-
     implementation(com.bowoon.android.buildsrc.Dependencies.Google.gson)
     implementation(com.bowoon.android.buildsrc.Dependencies.Retrofit2.converterGson)
-
     implementation(com.bowoon.android.buildsrc.Dependencies.KotlinSerialization.kotlinSerialization)
     implementation(com.bowoon.android.buildsrc.Dependencies.KotlinSerialization.kotlinSerializationConverter)
     implementation(com.bowoon.android.buildsrc.Dependencies.KotlinSerialization.kotlinSerializationCore) // JVM dependency
