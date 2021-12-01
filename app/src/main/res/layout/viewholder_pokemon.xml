@@ -11,7 +11,7 @@
 
         <variable
             name="dto"
-            type="com.bowoon.android.jetpackpractice.model.Pokemon" />
+            type="com.bowoon.android.jetpackpractice.model.PokemonModel.Pokemon" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

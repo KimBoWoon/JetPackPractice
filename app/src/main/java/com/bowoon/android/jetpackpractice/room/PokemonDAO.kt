@@ -2,7 +2,7 @@ package com.bowoon.android.jetpackpractice.room
 
 import androidx.paging.PagingSource
 import androidx.room.*
-import com.bowoon.android.jetpackpractice.model.Pokemon
+import com.bowoon.android.jetpackpractice.model.PokemonModel
 
 @Dao
 interface PokemonDAO {
@@ -13,7 +13,7 @@ interface PokemonDAO {
     fun delete(pokemon: WishPokemon)
 
     @Query("SELECT * FROM pokemon")
-    fun getPokemonList(): PagingSource<Int, Pokemon>
+    fun getPokemonList(): PagingSource<Int, PokemonModel.Pokemon>
 
     @Query("DELETE FROM pokemon")
     fun deleteAll()

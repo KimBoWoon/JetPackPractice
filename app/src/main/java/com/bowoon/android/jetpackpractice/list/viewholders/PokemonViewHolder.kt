@@ -4,19 +4,18 @@ import com.bowoon.android.jetpackpractice.base.BaseViewHolder
 import com.bowoon.android.jetpackpractice.base.POKEMON_DETAIL
 import com.bowoon.android.jetpackpractice.databinding.ViewholderPokemonBinding
 import com.bowoon.android.jetpackpractice.fragment.viewmodels.PokemonListFragmentViewModel
-import com.bowoon.android.jetpackpractice.model.Pokemon
-import kotlinx.coroutines.coroutineScope
+import com.bowoon.android.jetpackpractice.model.PokemonModel
 
 class PokemonViewHolder(
     private val binding: ViewholderPokemonBinding,
     private val fragmentVM: PokemonListFragmentViewModel? = null
-) : BaseViewHolder<Pokemon>(binding.root) {
-    override fun bind(pokemon: Pokemon) {
+) : BaseViewHolder<PokemonModel.Pokemon>(binding.root) {
+    override fun bind(pokemon: PokemonModel.Pokemon) {
         binding.vh = this
         binding.dto = pokemon
     }
 
-    fun goToDetail(pokemon: Pokemon) {
+    fun goToDetail(pokemon: PokemonModel.Pokemon) {
         fragmentVM?.goToDetail?.value = Pair(POKEMON_DETAIL, pokemon)
     }
 }

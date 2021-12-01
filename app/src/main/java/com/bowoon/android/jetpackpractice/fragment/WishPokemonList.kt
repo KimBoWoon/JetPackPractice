@@ -15,9 +15,7 @@ import com.bowoon.android.jetpackpractice.base.BaseFragmentWithViewModel
 import com.bowoon.android.jetpackpractice.databinding.FragmentWishPokemonBinding
 import com.bowoon.android.jetpackpractice.fragment.viewmodels.WishPokemonListViewModel
 import com.bowoon.android.jetpackpractice.paging.adapters.PokemonLoadPagingAdapter
-import com.bowoon.android.jetpackpractice.paging.adapters.PokemonPagingAdapter
 import com.bowoon.android.jetpackpractice.paging.adapters.WishPokemonPagingAdapter
-import com.bowoon.android.jetpackpractice.paging.utils.WishPokemonComparator
 import com.bowoon.android.jetpackpractice.room.WishPokemon
 import com.bowoon.android.jetpackpractice.util.px
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +29,7 @@ class WishPokemonList : BaseFragmentWithViewModel<FragmentWishPokemonBinding, Wi
     MainActivityViewModel::class.java
 ) {
     private val pokemonAdapter by lazy {
-        WishPokemonPagingAdapter(WishPokemonComparator, activityVM, fragmentVM).apply {
+        WishPokemonPagingAdapter(activityVM, fragmentVM).apply {
             addLoadStateListener {
                 if (it.source.refresh is LoadState.NotLoading && it.append.endOfPaginationReached && (binding.rvWishPokemonList.adapter?.itemCount ?: 0) < 1) {
                     binding.rvWishPokemonList.isVisible = false
@@ -89,7 +87,7 @@ class WishPokemonList : BaseFragmentWithViewModel<FragmentWishPokemonBinding, Wi
             layoutManager = GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false).apply {
                 spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(position: Int): Int =
-                        if (pokemonAdapter.getItemViewType(position) == PokemonPagingAdapter.LOAD_VIEW_HOLDER) {
+                        if (pokemonAdapter.getItemViewType(position) == R.layout.viewholder_load) {
                             2
                         } else {
                             1
