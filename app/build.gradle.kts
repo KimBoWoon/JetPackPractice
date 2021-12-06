@@ -1,33 +1,33 @@
 plugins {
-    kotlin("android")
-    kotlin("kapt")
+    id("kotlin-kapt")
+    id("kotlin-android")
     id("com.android.application")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
     id("dagger.hilt.android.plugin")
-    id("kotlinx-serialization")
+    kotlin("plugin.serialization") //version "1.5.31"
 //    id("de.fayard.refreshVersions") version "0.23.0"
 //    id("name.remal.check-dependency-updates") version "1.5.0"
 }
 
 android {
-    setCompileSdkVersion(com.bowoon.android.buildsrc.Versions.Apps.compileSdk)
-    buildToolsVersion = com.bowoon.android.buildsrc.Versions.Apps.buildToolVersion
+    setCompileSdkVersion(Versions.Apps.compileSdk)
+    buildToolsVersion = Versions.Apps.buildToolVersion
 
     defaultConfig {
-        applicationId = com.bowoon.android.buildsrc.Versions.Apps.applicationId
-        minSdk = com.bowoon.android.buildsrc.Versions.Apps.minSdk
-        targetSdk = com.bowoon.android.buildsrc.Versions.Apps.targetSdk
-        versionCode = com.bowoon.android.buildsrc.Versions.Apps.versionCode
-        versionName = com.bowoon.android.buildsrc.Versions.Apps.versionName
+        applicationId = Versions.Apps.applicationId
+        minSdk = Versions.Apps.minSdk
+        targetSdk = Versions.Apps.targetSdk
+        versionCode = Versions.Apps.versionCode
+        versionName = Versions.Apps.versionName
 
-        testInstrumentationRunner = com.bowoon.android.buildsrc.Versions.Apps.testInstrumentationRunner
+        testInstrumentationRunner = Versions.Apps.testInstrumentationRunner
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile(com.bowoon.android.buildsrc.Versions.Apps.proguardFile), com.bowoon.android.buildsrc.Versions.Apps.proguardRules)
+            proguardFiles(getDefaultProguardFile(Versions.Apps.proguardFile), Versions.Apps.proguardRules)
         }
     }
     compileOptions {
@@ -35,7 +35,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = com.bowoon.android.buildsrc.Versions.Apps.jvmVersion
+        jvmTarget = Versions.Apps.jvmVersion
     }
     buildFeatures {
         dataBinding = true
@@ -43,35 +43,7 @@ android {
 }
 
 dependencies {
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Kotlin.kotlin)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.core)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Appcompat.appcompat)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Google.material)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Layout.constraintlayout)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.lifecycleLiveData)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.viewmodel)
-//    testImplementation(com.bowoon.android.buildsrc.Dependencies.Test.junit)
-//    androidTestImplementation(com.bowoon.android.buildsrc.Dependencies.Test.junitExt)
-//    androidTestImplementation(com.bowoon.android.buildsrc.Dependencies.Test.espresso)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.navigation)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.navigationUi)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.fragment)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Retrofit2.retrofit)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Okhttp.loggingInterceptor)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Glide.glide)
-//    kapt(com.bowoon.android.buildsrc.Dependencies.Glide.compiler)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.room)
-//    kapt(com.bowoon.android.buildsrc.Dependencies.Ktx.roomCompiler)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Ktx.paging)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Hilt.hiltAndroid)
-//    kapt(com.bowoon.android.buildsrc.Dependencies.Hilt.hiltCompiler)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Google.gson)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.Retrofit2.converterGson)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.KotlinSerialization.kotlinSerialization)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.KotlinSerialization.kotlinSerializationConverter)
-//    implementation(com.bowoon.android.buildsrc.Dependencies.KotlinSerialization.kotlinSerializationCore) // JVM dependency
-
-    with(com.bowoon.android.buildsrc.Dependencies.Kotlin) {
+    with(Dependencies.Kotlin) {
         arrayOf(
             kotlin
         )
@@ -79,7 +51,7 @@ dependencies {
         implementation(it)
     }
 
-    with(com.bowoon.android.buildsrc.Dependencies.Ktx) {
+    with(Dependencies.Ktx) {
         arrayOf(
             navigation,
             navigationUi,
@@ -92,14 +64,14 @@ dependencies {
             paging
         )
     }.forEach {
-        if (it == com.bowoon.android.buildsrc.Dependencies.Ktx.roomCompiler) {
+        if (it == Dependencies.Ktx.roomCompiler) {
             kapt(it)
         } else {
             implementation(it)
         }
     }
 
-    with(com.bowoon.android.buildsrc.Dependencies.Appcompat) {
+    with(Dependencies.Appcompat) {
         arrayOf(
             appcompat
         )
@@ -107,7 +79,7 @@ dependencies {
         implementation(it)
     }
 
-    with(com.bowoon.android.buildsrc.Dependencies.Google) {
+    with(Dependencies.Google) {
         arrayOf(
             material,
             gson
@@ -116,7 +88,7 @@ dependencies {
         implementation(it)
     }
 
-    with(com.bowoon.android.buildsrc.Dependencies.Layout) {
+    with(Dependencies.Layout) {
         arrayOf(
             constraintlayout
         )
@@ -124,7 +96,7 @@ dependencies {
         implementation(it)
     }
 
-    with(com.bowoon.android.buildsrc.Dependencies.Retrofit2) {
+    with(Dependencies.Retrofit2) {
         arrayOf(
             retrofit,
             converterGson
@@ -133,7 +105,7 @@ dependencies {
         implementation(it)
     }
 
-    with(com.bowoon.android.buildsrc.Dependencies.Okhttp) {
+    with(Dependencies.Okhttp) {
         arrayOf(
             loggingInterceptor
         )
@@ -141,33 +113,33 @@ dependencies {
         implementation(it)
     }
 
-    with(com.bowoon.android.buildsrc.Dependencies.Glide) {
+    with(Dependencies.Glide) {
         arrayOf(
             glide,
             compiler
         )
     }.forEach {
-        if (it == com.bowoon.android.buildsrc.Dependencies.Glide.compiler) {
+        if (it == Dependencies.Glide.compiler) {
             kapt(it)
         } else {
             implementation(it)
         }
     }
 
-    with(com.bowoon.android.buildsrc.Dependencies.Hilt) {
+    with(Dependencies.Hilt) {
         arrayOf(
             hiltAndroid,
             hiltCompiler
         )
     }.forEach {
-        if (it == com.bowoon.android.buildsrc.Dependencies.Hilt.hiltCompiler) {
+        if (it == Dependencies.Hilt.hiltCompiler) {
             kapt(it)
         } else {
             implementation(it)
         }
     }
 
-    with(com.bowoon.android.buildsrc.Dependencies.KotlinSerialization) {
+    with(Dependencies.KotlinSerialization) {
         arrayOf(
             kotlinSerialization,
             kotlinSerializationConverter,
@@ -177,14 +149,22 @@ dependencies {
         implementation(it)
     }
 
-    with(com.bowoon.android.buildsrc.Dependencies.Test) {
+    with(Dependencies.ThirdParty) {
+        arrayOf(
+            okhttpProfiler
+        )
+    }.forEach {
+        implementation(it)
+    }
+
+    with(Dependencies.Test) {
         arrayOf(
             junit,
             junitExt,
             espresso
         )
     }.forEach {
-        if (it == com.bowoon.android.buildsrc.Dependencies.Test.junit) {
+        if (it == Dependencies.Test.junit) {
             testImplementation(it)
         } else {
             androidTestImplementation(it)

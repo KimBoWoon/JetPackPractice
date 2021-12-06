@@ -1,6 +1,8 @@
 package com.bowoon.android.jetpackpractice.model
 
-//@Serializable
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class PokemonResponse(
     val count: Int? = null,
     val next: String? = null,

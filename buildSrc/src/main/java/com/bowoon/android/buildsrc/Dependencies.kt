@@ -1,5 +1,3 @@
-package com.bowoon.android.buildsrc
-
 object Dependencies {
     /* Kotlin */
     object Kotlin {
@@ -148,5 +146,9 @@ object Dependencies {
         const val junit = "junit:junit:${Versions.Plugins.junit}"
         const val junitExt = "androidx.test.ext:junit:${Versions.Plugins.junitExt}"
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.Plugins.espressoCore}"
+    }
+
+    object ThirdParty {
+        const val okhttpProfiler = "com.localebro:okhttpprofiler:${Versions.Plugins.okhttpProfiler}"
     }
 }

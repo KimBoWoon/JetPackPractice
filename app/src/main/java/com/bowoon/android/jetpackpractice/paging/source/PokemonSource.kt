@@ -10,7 +10,8 @@ class PokemonSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonModel> {
 //        delay(5000) for test
         return try {
-            val response = pokemonApi.getPokemon(params.loadSize, params.key ?: 0)
+//            val response = pokemonApi.getPokemon(params.loadSize, params.key ?: 0)
+            val response = pokemonApi.getPokemon(20000, params.key ?: 0)
             LoadResult.Page(
                 data = response.results?.toList() ?: listOf(),
                 prevKey = null, // Only paging forward.

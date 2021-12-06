@@ -2,6 +2,7 @@ package com.bowoon.android.jetpackpractice.api
 
 import com.bowoon.android.jetpackpractice.base.BASE_URL
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.localebro.okhttpprofiler.OkHttpProfilerInterceptor
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -12,20 +13,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 private val json = Json {
     ignoreUnknownKeys = true
-    isLenient = true
+//    isLenient = true
     prettyPrint = true
-    allowStructuredMapKeys = true
-    encodeDefaults = true
-    classDiscriminator = "#class"
+//    allowStructuredMapKeys = true
+//    encodeDefaults = true
+//    classDiscriminator = "#class"
 }
 
 @ExperimentalSerializationApi
-fun providePokemonApi(): Pokemon =
+fun providePokemonApi(converter: String): Pokemon =
     Retrofit.Builder().apply {
         baseUrl(BASE_URL)
         client(createOkHttpClient())
-//        addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
-        addConverterFactory(GsonConverterFactory.create())
+        if (converter.equals("serialization", true)) {
+            addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+        } else {
+            addConverterFactory(GsonConverterFactory.create())
+        }
     }.build().create(Pokemon::class.java)
 
 fun createOkHttpClient(): OkHttpClient =
@@ -33,4 +37,5 @@ fun createOkHttpClient(): OkHttpClient =
         addInterceptor(HttpLoggingInterceptor().apply {
             setLevel(HttpLoggingInterceptor.Level.BODY)
         })
+        addInterceptor(OkHttpProfilerInterceptor())
     }.build()

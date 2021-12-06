@@ -1,5 +1,3 @@
-package com.bowoon.android.buildsrc
-
 object Versions {
     object Apps {
         const val compileSdk = 31
@@ -50,5 +48,6 @@ object Versions {
         const val roomVersion = "2.3.0"
         const val kotlinxSerialization = "1.3.1"
         const val serializationConverter = "0.8.0"
+        const val okhttpProfiler = "1.0.8"
     }
 }

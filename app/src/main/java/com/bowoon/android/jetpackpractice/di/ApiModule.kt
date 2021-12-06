@@ -12,5 +12,9 @@ import javax.inject.Singleton
 class ApiModule {
     @Provides
     @Singleton
-    fun provideRetrofit() = providePokemonApi()
+    fun provideRetrofit() = providePokemonApi("serialization")
+
+//    @Provides
+//    @Singleton
+//    fun provideRetrofit() = providePokemonApi("gson")
 }
