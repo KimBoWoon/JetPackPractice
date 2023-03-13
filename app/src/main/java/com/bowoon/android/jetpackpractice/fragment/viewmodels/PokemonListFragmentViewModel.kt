@@ -34,6 +34,6 @@ class PokemonListFragmentViewModel @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {
-        12
+        13
     }
 }
