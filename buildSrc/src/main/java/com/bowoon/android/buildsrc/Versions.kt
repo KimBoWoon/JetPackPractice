@@ -4,8 +4,8 @@ object Versions {
         const val minSdk = 22
         const val targetSdk = 31
         const val buildToolVersion = "30.0.3"
-        const val versionCode = 1
-        const val versionName = "1.0.0"
+        const val versionCode = 4
+        const val versionName = "1.0.3"
         const val applicationId = "com.bowoon.android.jetpackpractice"
         const val proguardFile = "proguard-android-optimize.txt"
         const val proguardRules = "proguard-rules.pro"

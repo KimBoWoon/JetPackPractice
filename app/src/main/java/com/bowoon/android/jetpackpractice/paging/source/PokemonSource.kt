@@ -1,26 +1,28 @@
 package com.bowoon.android.jetpackpractice.paging.source
 
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
+import androidx.paging.*
 import com.bowoon.android.jetpackpractice.model.PokemonModel
+import com.bowoon.android.jetpackpractice.room.RoomHelper
+import com.bowoon.android.jetpackpractice.room.RoomPokemon
 
 class PokemonSource(
     private val pokemonApi: com.bowoon.android.jetpackpractice.api.Pokemon
 ) : PagingSource<Int, PokemonModel>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonModel> {
 //        delay(5000) for test
-        return try {
-//            val response = pokemonApi.getPokemon(params.loadSize, params.key ?: 0)
-            val response = pokemonApi.getPokemon(20000, params.key ?: 0)
-            LoadResult.Page(
+        runCatching {
+            val response = pokemonApi.getPokemon(params.loadSize, params.key ?: 0)
+            return LoadResult.Page(
                 data = response.results?.toList() ?: listOf(),
                 prevKey = null, // Only paging forward.
                 nextKey = params.loadSize + (params.key ?: 0)
             )
-        } catch (e: Exception) {
+        }.onFailure { e ->
             e.printStackTrace()
-            LoadResult.Error(e)
+            return LoadResult.Error(e)
         }
+
+        return LoadResult.Error(Throwable("Paging error"))
     }
 
     override fun getRefreshKey(state: PagingState<Int, PokemonModel>): Int? {

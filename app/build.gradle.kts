@@ -24,10 +24,31 @@ android {
         testInstrumentationRunner = Versions.Apps.testInstrumentationRunner
     }
 
+    signingConfigs {
+        getByName("debug") {
+            keyAlias = "jetpack-practice"
+            keyPassword = "qwer1234"
+            storeFile = file("../sign/jetpack-practice.jks")
+            storePassword = "qwer1234"
+        }
+        create("release") {
+            keyAlias = "jetpack-practice"
+            keyPassword = "qwer1234"
+            storeFile = file("../sign/jetpack-practice.jks")
+            storePassword = "qwer1234"
+        }
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile(Versions.Apps.proguardFile), Versions.Apps.proguardRules)
+            signingConfig = signingConfigs.getByName("release")
+            isDebuggable = false
+        }
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
+            isDebuggable = true
         }
     }
     compileOptions {
@@ -43,6 +64,7 @@ android {
 }
 
 dependencies {
+    implementation("com.google.android.play:core-ktx:1.8.1")
     with(Dependencies.Kotlin) {
         arrayOf(
             kotlin
