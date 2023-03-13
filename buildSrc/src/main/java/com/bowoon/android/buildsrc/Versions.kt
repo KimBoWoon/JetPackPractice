@@ -14,7 +14,7 @@ object Versions {
     }
 
     object Plugins {
-        const val gradle = "7.0.3"
+        const val gradle = "7.4.2"
         const val kotlin = "1.5.31"
         const val appcompat = "1.4.0"
         const val junit = "4.13.2"
